@@ -72,6 +72,18 @@ export const MODELS: Model[] = [
     accent: 'magenta',
   },
   {
+    name: 'DeepSeek V4',
+    vendor: 'DeepSeek',
+    context: '128K',
+    strengths: { zh: '新一代旗舰：推理、编码、中文进一步增强', en: 'Latest flagship: stronger reasoning, coding, and Chinese' },
+    notes: {
+      zh: 'DeepSeek 最新一代主力模型，相对 V3 在长链路推理与代码任务上提升明显，开源生态友好，价格仍具竞争力。',
+      en: "DeepSeek's latest flagship. Notably better than V3 on long-chain reasoning and coding tasks. Open ecosystem; pricing still competitive.",
+    },
+    tags: ['open', 'reasoning', 'cn', 'flagship'],
+    accent: 'amber',
+  },
+  {
     name: 'DeepSeek V3 / R1',
     vendor: 'DeepSeek',
     context: '128K',
