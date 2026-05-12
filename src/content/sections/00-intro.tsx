@@ -5,17 +5,11 @@ import Callout from '@/components/Callout'
 import ConceptCard from '@/components/ConceptCard'
 import CardGrid from '@/components/CardGrid'
 import AsciiDivider from '@/components/AsciiDivider'
+import BiImage from '@/components/BiImage'
 import { useI18n } from '@/hooks/useI18n'
 
-const BASE = import.meta.env.BASE_URL
-
 export default function Intro() {
-  const { pick, lang } = useI18n()
-  const heroSrc = `${BASE}images/Introduction-${lang === 'zh' ? 'CH' : 'EN'}.png`
-  const heroAlt = pick({
-    zh: 'Vibe Coding 入门示意图',
-    en: 'Vibe Coding introduction illustration',
-  })
+  const { pick } = useI18n()
   return (
     <Section
       id="intro"
@@ -26,25 +20,13 @@ export default function Intro() {
         en: 'A cheatsheet for AI coding beginners — from understanding LLMs to hands-on vibe-coding',
       }}
     >
-      <figure className="my-4 border border-line/80 rounded-md bg-bg-elev/40 overflow-hidden hover:border-cyan/40 hover:shadow-glow-cyan transition-all">
-        <div className="flex items-center h-7 px-3 border-b border-line/60 bg-bg-elev2/50">
-          <div className="flex items-center gap-1.5">
-            <span className="block w-2.5 h-2.5 rounded-full bg-[#FF5F57]/70" />
-            <span className="block w-2.5 h-2.5 rounded-full bg-[#FEBC2E]/70" />
-            <span className="block w-2.5 h-2.5 rounded-full bg-[#28C840]/70" />
-          </div>
-          <span className="flex-1 text-center text-[11px] text-fg-dim truncate select-none">
-            intro.png · {lang === 'zh' ? 'CH' : 'EN'}
-          </span>
-        </div>
-        <img
-          key={lang}
-          src={heroSrc}
-          alt={heroAlt}
-          loading="eager"
-          className="block w-full h-auto"
-        />
-      </figure>
+      <BiImage
+        name="Introduction"
+        alt={{
+          zh: 'Vibe Coding 入门示意图',
+          en: 'Vibe Coding introduction illustration',
+        }}
+      />
 
       <p className="text-fg/90 text-[14px] leading-relaxed">
         <span className="text-amber">$</span>{' '}

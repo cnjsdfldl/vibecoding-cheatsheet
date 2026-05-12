@@ -6,6 +6,7 @@ import ConceptCard from '@/components/ConceptCard'
 import CardGrid from '@/components/CardGrid'
 import ComparisonTable from '@/components/ComparisonTable'
 import CodeBlock from '@/components/CodeBlock'
+import BiImage from '@/components/BiImage'
 import { useI18n } from '@/hooks/useI18n'
 import { MODELS } from '@/data/models'
 
@@ -23,6 +24,10 @@ export default function AIFundamentals() {
     >
       {/* 1.1 What is LLM */}
       <SubHeading id="what-is-llm" num="1.1" title={{ zh: '什么是 LLM', en: 'What is an LLM' }} />
+      <BiImage
+        name="About-LLM"
+        alt={{ zh: '什么是 LLM 示意图', en: 'What is an LLM — illustration' }}
+      />
       <BiP
         text={{
           zh: 'LLM = Large Language Model（大语言模型）。它是一个用海量文本训练出来的神经网络，本质是「预测下一个词」——你给它一段话，它根据训练时见过的模式接下去。会编程，是因为代码也是文本；会思考，是因为它看过太多人类的思考过程。',
