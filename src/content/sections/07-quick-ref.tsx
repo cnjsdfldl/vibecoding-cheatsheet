@@ -5,6 +5,7 @@ import CardGrid from '@/components/CardGrid'
 import ConceptCard from '@/components/ConceptCard'
 import CodeBlock from '@/components/CodeBlock'
 import Kbd from '@/components/Kbd'
+import VendorLogo from '@/components/VendorLogo'
 import { useI18n } from '@/hooks/useI18n'
 import { MODELS } from '@/data/models'
 
@@ -34,7 +35,17 @@ export default function QuickRef() {
       <SubHeading id="models-table" title={{ zh: '模型对比', en: 'Models comparison' }} />
       <ComparisonTable
         columns={[
-          { key: 'name', header: 'Model', className: 'text-cyan font-semibold' },
+          {
+            key: 'name',
+            header: 'Model',
+            className: 'text-cyan font-semibold',
+            render: (m: any) => (
+              <span className="inline-flex items-center gap-2">
+                <VendorLogo vendor={m.vendor} />
+                <span>{m.name}</span>
+              </span>
+            ),
+          },
           { key: 'vendor', header: 'Vendor', className: 'text-fg-dim' },
           { key: 'context', header: 'Ctx', className: 'text-amber' },
           {

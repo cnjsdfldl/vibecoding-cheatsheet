@@ -7,6 +7,7 @@ import CardGrid from '@/components/CardGrid'
 import ComparisonTable from '@/components/ComparisonTable'
 import CodeBlock from '@/components/CodeBlock'
 import BiImage from '@/components/BiImage'
+import VendorLogo from '@/components/VendorLogo'
 import { useI18n } from '@/hooks/useI18n'
 import { MODELS } from '@/data/models'
 
@@ -51,7 +52,17 @@ export default function AIFundamentals() {
       />
       <ComparisonTable
         columns={[
-          { key: 'name', header: 'Model', className: 'text-cyan font-semibold' },
+          {
+            key: 'name',
+            header: 'Model',
+            className: 'text-cyan font-semibold',
+            render: (m: any) => (
+              <span className="inline-flex items-center gap-2">
+                <VendorLogo vendor={m.vendor} />
+                <span>{m.name}</span>
+              </span>
+            ),
+          },
           { key: 'vendor', header: 'Vendor', className: 'text-fg-dim' },
           { key: 'context', header: 'Ctx', className: 'text-amber' },
           {
