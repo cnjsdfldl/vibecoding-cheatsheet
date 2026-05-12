@@ -27,11 +27,20 @@ export default function PromptEngineering() {
           en: 'A serious prompt should cover five elements. Even using two of them is 10× better than "help me write xxx".',
         }}
       />
-      <CodeBlock filename="prompt.md" lang="md">{`# Role        ── 你是什么角色（资深 React 工程师 / 文案专家）
+      <CodeBlock filename="prompt.md" lang="md">
+        {pick({
+          zh: `# Role        ── 你是什么角色（资深 React 工程师 / 文案专家）
 # Task        ── 一句话目标
 # Context     ── 背景、约束、相关文件
 # Format      ── 期望的输出形式（代码 / 表格 / Markdown）
-# Constraints ── 不要做什么、必须做什么`}</CodeBlock>
+# Constraints ── 不要做什么、必须做什么`,
+          en: `# Role        ── what role you play (senior React engineer / copywriter)
+# Task        ── one-sentence goal
+# Context     ── background, constraints, relevant files
+# Format      ── expected output shape (code / table / Markdown)
+# Constraints ── what not to do, what must be done`,
+        })}
+      </CodeBlock>
 
       {/* 2.2 Five principles */}
       <SubHeading id="five-principles" num="2.2" title={{ zh: '五大黄金原则', en: 'Five golden principles' }} />
@@ -113,8 +122,15 @@ export default function PromptEngineering() {
         }}
       />
       <div className="grid md:grid-cols-2 gap-3">
-        <CodeBlock filename="bad-prompt.md" lang="md">{`帮我写个登录功能`}</CodeBlock>
-        <CodeBlock filename="good-prompt.md" lang="md">{`角色：你是资深 React 工程师。
+        <CodeBlock filename="bad-prompt.md" lang="md">
+          {pick({
+            zh: `帮我写个登录功能`,
+            en: `help me write a login feature`,
+          })}
+        </CodeBlock>
+        <CodeBlock filename="good-prompt.md" lang="md">
+          {pick({
+            zh: `角色：你是资深 React 工程师。
 
 任务：用 React + TypeScript 写一个邮箱密码登录组件。
 
@@ -128,7 +144,24 @@ export default function PromptEngineering() {
 输出：
 - 完整 LoginForm.tsx
 - 配套 schema 文件
-- 一句话使用说明`}</CodeBlock>
+- 一句话使用说明`,
+            en: `Role: You are a senior React engineer.
+
+Task: Build an email-password login component in React + TypeScript.
+
+Constraints:
+- Use react-hook-form for forms
+- Password must be ≥ 8 chars, mixing letters and digits
+- Show specific errors on failure (invalid email / weak password / network error)
+- While submitting: disable the button and show a spinner
+- Don't introduce extra dependencies
+
+Output:
+- A complete LoginForm.tsx
+- A companion schema file
+- A one-line usage note`,
+          })}
+        </CodeBlock>
       </div>
 
       {/* 2.4 Anti-patterns */}
@@ -168,7 +201,7 @@ export default function PromptEngineering() {
           key={p.id}
           title={pick(p.title)}
           scenario={pick(p.scenario)}
-          template={p.template}
+          template={pick(p.template)}
           notes={p.notes ? pick(p.notes) : undefined}
         />
       ))}
