@@ -112,7 +112,9 @@ export default function QuickRef() {
       </CardGrid>
 
       <SubHeading id="cheat-phrases" title={{ zh: '万能口令', en: 'Magic phrases' }} />
-      <CodeBlock filename="phrases.md" lang="md">{`# 让它先想再做
+      <CodeBlock filename="phrases.md" lang="md">
+        {pick({
+          zh: `# 让它先想再做
 "先列出你的计划，等我确认再开始改文件"
 
 # 让它读代码再说话
@@ -131,7 +133,29 @@ export default function QuickRef() {
 "用最简单的话讲。假设我是个聪明的新手，不要堆术语"
 
 # 让它停止过度道歉
-"不要说'我理解了''你说得对'之类的客套，直接进入正题"`}</CodeBlock>
+"不要说'我理解了''你说得对'之类的客套，直接进入正题"`,
+          en: `# Make it think before doing
+"Outline your plan first; don't edit any files until I confirm."
+
+# Make it read the code first
+"Without modifying anything, read @src/auth/ and summarize the current state."
+
+# Make it admit uncertainty
+"If you're not sure, say 'unknown' instead of guessing."
+
+# Make it offer alternatives
+"Give me 3 options with pros/cons, then recommend one and explain why."
+
+# Make it review
+"Put on a reviewer hat and find problems in the code you just wrote."
+
+# Make it simplify
+"Explain in the simplest terms. Assume I'm a smart beginner — don't pile on jargon."
+
+# Make it stop over-apologizing
+"Skip pleasantries like 'I understand' / 'You're right' — just get to the point."`,
+        })}
+      </CodeBlock>
     </Section>
   )
 }
