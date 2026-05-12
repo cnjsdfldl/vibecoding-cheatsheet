@@ -14,7 +14,6 @@ export default function SubHeading({ id, num, title }: Props) {
       <span className="text-amber/90">▸</span>
       {num && <span className="text-fg-mute text-[12px] font-normal">{num}</span>}
       <span className="text-fg">{pick(title)}</span>
-      {title.zh !== title.en && <span className="text-fg-mute text-[11px] font-normal">/ {pick(title) === title.zh ? title.en : title.zh}</span>}
     </h3>
   )
 }

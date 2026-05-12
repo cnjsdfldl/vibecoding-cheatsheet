@@ -4,30 +4,35 @@ import { useI18n } from '@/hooks/useI18n'
 interface Heading {
   id: string
   text: string
-  level: number
 }
 
 export default function OnThisPage() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const [headings, setHeadings] = useState<Heading[]>([])
   const [active, setActive] = useState<string>('')
 
+  // Re-collect headings whenever language changes or DOM mutates
   useEffect(() => {
     const collect = () => {
       const els = Array.from(document.querySelectorAll<HTMLElement>('main h3[id]'))
       setHeadings(
         els.map((el) => ({
           id: el.id,
-          text: el.textContent?.replace(/\/.*$/, '').trim() ?? el.id,
-          level: 3,
+          text: (el.textContent ?? el.id)
+            .replace(/^[▸▶»]\s*/, '')
+            .trim(),
         }))
       )
     }
     collect()
     const mo = new MutationObserver(collect)
-    mo.observe(document.body, { childList: true, subtree: true })
+    mo.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    })
     return () => mo.disconnect()
-  }, [])
+  }, [lang])
 
   useEffect(() => {
     if (headings.length === 0) return

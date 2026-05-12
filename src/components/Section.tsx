@@ -19,11 +19,8 @@ export default function Section({ id, num, title, subtitle, children }: Props) {
           <span className="text-amber/80">$</span>
           <span className="text-[11px] uppercase tracking-[0.2em] text-fg-dim">section {num}</span>
         </div>
-        <h2 className="mt-1 mb-1 text-[22px] font-bold text-fg flex items-baseline gap-3">
+        <h2 className="mt-1 mb-1 text-[22px] font-bold text-fg">
           <span className="text-cyan">{pick(title)}</span>
-          {title.zh !== title.en && (
-            <span className="text-[12px] font-normal text-fg-mute">{pick(title) === title.zh ? title.en : title.zh}</span>
-          )}
         </h2>
         {subtitle && <p className="m-0 text-fg-dim text-[13px]">{pick(subtitle)}</p>}
       </header>
