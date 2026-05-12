@@ -26,6 +26,12 @@
 
 html, body, #root {
   height: 100%;
+  /* Lock to viewport width to prevent any rogue wide element (long pre,
+     ASCII art, oversized image) from causing horizontal page scroll on
+     narrow screens. Internal scrollable areas (CodeBlock, tables) still
+     work because they have their own overflow-x: auto. */
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 html {
