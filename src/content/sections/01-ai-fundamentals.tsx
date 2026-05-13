@@ -95,6 +95,11 @@ export default function AIFundamentals() {
             zh: 'AI 不按字读，按 token 读。1 英文单词 ≈ 1 token；1 汉字 ≈ 1-2 token。提示词太长会被截断。',
             en: 'AI reads tokens, not letters. 1 EN word ≈ 1 token; 1 CN char ≈ 1-2 tokens. Long prompts get truncated.',
           })}
+          <BiImage
+            name="concepts-token"
+            alt={{ zh: 'Token 切分示例', en: 'Token segmentation example' }}
+            maxWidth="100%"
+          />
         </ConceptCard>
         <ConceptCard accent="magenta" title="Context Window" subtitle={pick({ zh: '工作记忆容量', en: 'Working-memory size' })}>
           {pick({
