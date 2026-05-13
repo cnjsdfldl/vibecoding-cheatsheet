@@ -28,7 +28,7 @@ export default function Header({ onOpenSearch }: Props) {
         <div className="flex items-baseline gap-2 min-w-0">
           <span className="text-amber font-bold">$</span>
           <span className="font-display text-cyan text-[15px] tracking-wider truncate neon-cyan">
-            vibe --help
+            vibecoding cheat sheet
           </span>
           <span className="hidden md:inline text-fg-dim text-[12px] truncate">
             ─ {pick({ zh: 'AI 编程速查表', en: 'AI Coding CheatSheet' })}
